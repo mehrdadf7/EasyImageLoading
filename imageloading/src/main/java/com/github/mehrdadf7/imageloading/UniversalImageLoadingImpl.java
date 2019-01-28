@@ -1,20 +1,29 @@
 package com.github.mehrdadf7.imageloading;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 
 public class UniversalImageLoadingImpl implements ImageLoading {
 
+    private Context context;
     private DisplayImageOptions options;
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
-    public UniversalImageLoadingImpl() {
-        imageLoader.init(Application.config);
+    public UniversalImageLoadingImpl(Context context) {
+        this.context = context;
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .denyCacheImageMultipleSizesInMemory()
+                .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
+                .writeDebugLogs()
+                .build();
+        imageLoader.init(config);
     }
 
     @Override
