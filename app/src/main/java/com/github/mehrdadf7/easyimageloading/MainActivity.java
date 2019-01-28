@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         ImageLoadingInjector.getImageLoading()
                 .loadImage(
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSydlFPbmgNEkTKAELqItsxLxYJzHxLhiuMzzFeANeF-7nqPaOvPw",
-                        imageView
+                        R.drawable.placeholder, R.drawable.placeholder, imageView
                 );
 
     }
